@@ -6,10 +6,9 @@ export const AddButton: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     return setOpen(true);
-
+  };
   const handleClose = () => {
-    return setOpen(false);}
- 
+    return setOpen(false);
   };
   return (
     <>

@@ -4,14 +4,14 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-const ariaLabel = { "aria-label": "description" };
 type Props = {
   open: boolean;
-  setOpen: boolean;
+  setOpen:(open: boolean) => void;
+    };
     
-  };
-export const AddTaskDialog: React.FC<Props> = ({ open, setOpen }) => {
+export const AddTaskDialog: React.FC<Props> = ({ open, setOpen}) => {
   return (
+  
     <>
       <Dialog
         className="Dialog"
@@ -31,7 +31,7 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen }) => {
             sx={{
               width: "25ch",
             }}
-            spacing={2}
+            spacing={6}
             noValidate
             autoComplete="off"
           >
@@ -40,17 +40,19 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen }) => {
               defaultValue=""
               variant="filled"
               size="small"
+              value="name"
             />
             <TextField
               hiddenLabel
               defaultValue=""
               variant="filled"
               size="small"
-              value={}
+              value="desc"
             />
           </Stack>
-          <Stack spacing={2} direction="row">
-            <Button onClick {() => setOpen()} variant="contained">Cancel</Button>
+          <Stack spacing={4} direction="row">
+            <Button onClick {() => setOpen(false)}variant=
+            "contained">Cancel</Button>
             <Button variant="contained">submit</Button>
           </Stack>
         </DialogContent>

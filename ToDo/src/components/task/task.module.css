@@ -1,0 +1,32 @@
+.container {
+  background-color: white;
+  border: 10px;
+  border-radius: 10px;
+  gap: 1.5rem;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 18%;
+}
+
+.name {
+  padding-left: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.desc {
+  padding-left: 20px;
+  font-family: Arial, sans-serif;
+  color: rgb(178, 111, 186);
+  font-size: medium;
+}
+.head {
+  display: flex;
+  justify-content:space-between;
+}
+.check {
+  border: none;
+  background-color: white;
+}
+.check:hover {
+  color: green;
+}

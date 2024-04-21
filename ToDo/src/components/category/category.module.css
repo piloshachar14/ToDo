@@ -1,0 +1,14 @@
+.category {
+  display: flex;
+  background-color:#d4ccff;
+  border-radius: 6px;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+.title {
+  padding-left: 10px;
+  font-family: Arial, sans-serif;
+  color: rgb(65, 5, 65);
+  font-size: 1.5em;
+}

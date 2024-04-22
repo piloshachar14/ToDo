@@ -7,9 +7,6 @@ export const AddButton: React.FC = () => {
   const handleClickOpen = () => {
     return setOpen(true);
   };
-  const handleClose = () => {
-    return setOpen(false);
-  };
   return (
     <>
       <div>

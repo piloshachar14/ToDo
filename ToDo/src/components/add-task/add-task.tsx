@@ -8,13 +8,11 @@ import React, { ChangeEvent, useState } from "react";
 type Props = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onSubmit: (data: { name: string; description: string }) => void;
 };
 
-export const AddTaskDialog: React.FC<Props> = ({ open, setOpen }) => {
+export const AddTaskDialog: React.FC<Props> = ({ open, setOpen, onSubmit }) => {
   const handleClose = () => setOpen(false);
-  const [taskName, settaskName] = useState("");
-  const [taskDesc, settaskDesc] = useState("");
-
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     settaskName(e.target.value);
   };
@@ -22,7 +20,10 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen }) => {
   const handleDescChange = (e: ChangeEvent<HTMLInputElement>) => {
     settaskDesc(e.target.value);
   };
+  const [taskName, settaskName] = useState("");
+  const [taskDesc, settaskDesc] = useState("");
   const handleOnSubmit: () => void = () => {
+    onSubmit({ name: taskName, description: taskDesc });
     console.log(taskName, taskDesc);
     handleClose();
   };
@@ -71,11 +72,7 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen }) => {
             <Button onClick={() => handleClose()} variant="contained">
               Cancel
             </Button>
-            <Button
-              onClick={() => handleOnSubmit()}
-              type="submit"
-              variant="contained"
-            >
+            <Button onClick={handleOnSubmit} type="submit" variant="contained">
               submit
             </Button>
           </Stack>

@@ -1,31 +1,36 @@
 .container {
   background-color: white;
-  border: 10px;
-  border-radius: 10px;
-  gap: 1.5rem;
+  border: 5px;
+  border-radius: 20px;
   margin-left: 10px;
   margin-right: 10px;
   height: 18%;
+  display: flex;
+  justify-content: space-between;
+}
+.head {
+  display: flex;
+  flex-direction: column;
 }
 
 .name {
   padding-left: 10px;
   font-family: Arial, sans-serif;
+  justify-content: space-between;
 }
 
 .desc {
-  padding-left: 20px;
+  padding-left: 110%;
   font-family: Arial, sans-serif;
   color: rgb(178, 111, 186);
-  font-size: medium;
-}
-.head {
-  display: flex;
-  justify-content:space-between;
+  font-size: large;
 }
 .check {
+  display: flex;
+  flex-direction: row;
   border: none;
   background-color: white;
+  padding-right: 10px;
 }
 .check:hover {
   color: green;

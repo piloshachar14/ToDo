@@ -1,14 +1,17 @@
 .category {
   display: flex;
-  background-color:#d4ccff;
+  background-color: #d4ccff;
   border-radius: 6px;
   height: 100%;
   width: 100%;
   flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  gap: 16px;
 }
 .title {
   padding-left: 10px;
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-seri f;
   color: rgb(65, 5, 65);
   font-size: 1.5em;
 }

@@ -5,26 +5,32 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import React, { ChangeEvent, useState } from "react";
+import { TaskData } from "../../App";
+import styles from "./add-task.module.css";
+
 type Props = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  onSubmit: (data: { name: string; description: string }) => void;
+  onSubmit: (data: TaskData) => void;
 };
 
 export const AddTaskDialog: React.FC<Props> = ({ open, setOpen, onSubmit }) => {
   const handleClose = () => setOpen(false);
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    settaskName(e.target.value);
+    setTaskName(e.target.value);
   };
 
   const handleDescChange = (e: ChangeEvent<HTMLInputElement>) => {
-    settaskDesc(e.target.value);
+    setTaskDesc(e.target.value);
   };
-  const [taskName, settaskName] = useState("");
-  const [taskDesc, settaskDesc] = useState("");
+  const [taskName, setTaskName] = useState("");
+  const [taskDesc, setTaskDesc] = useState("");
   const handleOnSubmit: () => void = () => {
-    onSubmit({ name: taskName, description: taskDesc });
-    console.log(taskName, taskDesc);
+    onSubmit({
+      name: taskName,
+      description: taskDesc,
+      id: crypto.randomUUID(),
+    });
     handleClose();
   };
 
@@ -37,16 +43,30 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen, onSubmit }) => {
           width: "100%",
           height: "100%",
           position: "center",
+          alignContent: "center",
+          "& .MuiPaper-root": {
+            height: "600px",
+            width: "600px",
+          },
         }}
       >
         <DialogTitle component="h1" align="center">
           Add Task
         </DialogTitle>
-        <DialogContent>
+        <DialogContent
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: "2rem",
+          }}
+        >
           <Stack
             component="form"
             sx={{
               width: "25ch",
+              gap: "1rem",
             }}
             spacing={4}
             noValidate
@@ -56,23 +76,55 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen, onSubmit }) => {
               hiddenLabel
               defaultValue=""
               variant="filled"
+              margin="dense"
+              label="task name"
               size="small"
               onChange={handleNameChange}
             />
             <TextField
               hiddenLabel
               defaultValue=""
+              margin="dense"
               variant="filled"
+              label="task description"
               size="small"
               onChange={handleDescChange}
             />
           </Stack>
-          <Stack spacing={4} />
+          <Stack
+            sx={{
+              marginTop: "20px",
+            }}
+            spacing={4}
+          />
           <Stack spacing={4} direction="row">
-            <Button onClick={() => handleClose()} variant="contained">
+            <Button
+              sx={{
+                backgroundColor: "#d4ccff",
+                "&:hover": {
+                  cursor: "pointer",
+                  backgroundColor: "#bcb3ef",
+                },
+              }}
+              className="cancel"
+              onClick={() => handleClose()}
+              variant="contained"
+            >
               Cancel
             </Button>
-            <Button onClick={handleOnSubmit} type="submit" variant="contained">
+            <Button
+              sx={{
+                backgroundColor: "#d4ccff",
+                "&:hover": {
+                  cursor: "pointer",
+                  backgroundColor: "#bcb3ef",
+                },
+              }}
+              className="submit"
+              onClick={handleOnSubmit}
+              type="submit"
+              variant="contained"
+            >
               submit
             </Button>
           </Stack>

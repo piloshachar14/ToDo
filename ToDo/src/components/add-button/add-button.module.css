@@ -13,4 +13,9 @@
   border-width: 5px;
   border-style: solid;
   cursor: pointer;
+  transition-duration: 150ms;
+}
+.btn:hover {
+  transform: scale(1.1);
+  background-color: rgb(103, 234, 114);
 }

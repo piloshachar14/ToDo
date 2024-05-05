@@ -6,8 +6,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import React, { ChangeEvent, useState } from "react";
 import { TaskData } from "../../App";
-import styles from "./add-task.module.css";
-
+import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 type Props = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,38 +29,47 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen, onSubmit }) => {
       name: taskName,
       description: taskDesc,
       id: crypto.randomUUID(),
+      isDone: false,
     });
     handleClose();
   };
+  const handleClickAway = () => {
+    setOpen(false);
+  };
 
   return (
-    <>
-      <Dialog
-        className="Dialog"
-        open={open}
+    <Dialog
+      open={open}
+      sx={{
+        width: "100%",
+        height: "100%",
+        position: "center",
+        alignContent: "center",
+        "& .MuiPaper-root": {
+          height: "600px",
+          width: "600px",
+        },
+      }}
+    >
+      <DialogTitle
         sx={{
-          width: "100%",
-          height: "100%",
-          position: "center",
-          alignContent: "center",
-          "& .MuiPaper-root": {
-            height: "600px",
-            width: "600px",
-          },
+          paddingTop: "30px",
+        }}
+        component="h1"
+        align="center"
+      >
+        Add A Task
+      </DialogTitle>
+      <DialogContent
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: "2rem",
         }}
       >
-        <DialogTitle component="h1" align="center">
-          Add Task
-        </DialogTitle>
-        <DialogContent
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            gap: "2rem",
-          }}
-        >
+        <ClickAwayListener onClickAway={handleClickAway}>
           <Stack
             component="form"
             sx={{
@@ -78,7 +86,7 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen, onSubmit }) => {
               variant="filled"
               margin="dense"
               label="task name"
-              size="small"
+              size="medium"
               onChange={handleNameChange}
             />
             <TextField
@@ -87,49 +95,53 @@ export const AddTaskDialog: React.FC<Props> = ({ open, setOpen, onSubmit }) => {
               margin="dense"
               variant="filled"
               label="task description"
-              size="small"
+              size="medium"
               onChange={handleDescChange}
             />
           </Stack>
-          <Stack
+        </ClickAwayListener>
+        <Stack
+          sx={{
+            marginTop: "20px",
+          }}
+          spacing={4}
+        />
+        <Stack spacing={4} direction="row">
+          <Button
             sx={{
-              marginTop: "20px",
+              backgroundColor: "#8a4af3",
+              transitionDuration: "100ms",
+              "&:hover": {
+                cursor: "pointer",
+                backgroundColor: "#5320a4",
+                transform: "scale(1.2)",
+              },
             }}
-            spacing={4}
-          />
-          <Stack spacing={4} direction="row">
-            <Button
-              sx={{
-                backgroundColor: "#d4ccff",
-                "&:hover": {
-                  cursor: "pointer",
-                  backgroundColor: "#bcb3ef",
-                },
-              }}
-              className="cancel"
-              onClick={() => handleClose()}
-              variant="contained"
-            >
-              Cancel
-            </Button>
-            <Button
-              sx={{
-                backgroundColor: "#d4ccff",
-                "&:hover": {
-                  cursor: "pointer",
-                  backgroundColor: "#bcb3ef",
-                },
-              }}
-              className="submit"
-              onClick={handleOnSubmit}
-              type="submit"
-              variant="contained"
-            >
-              submit
-            </Button>
-          </Stack>
-        </DialogContent>
-      </Dialog>
-    </>
+            className="cancel"
+            onClick={() => handleClose()}
+            variant="contained"
+          >
+            Cancel
+          </Button>
+          <Button
+            sx={{
+              backgroundColor: "#8a4af3",
+              transitionDuration: "100ms",
+              "&:hover": {
+                cursor: "pointer",
+                backgroundColor: "#5320a4",
+                transform: "scale(1.2)",
+              },
+            }}
+            className="submit"
+            onClick={handleOnSubmit}
+            type="submit"
+            variant="contained"
+          >
+            submit
+          </Button>
+        </Stack>
+      </DialogContent>
+    </Dialog>
   );
 };

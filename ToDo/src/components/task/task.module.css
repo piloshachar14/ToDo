@@ -1,32 +1,25 @@
 .container {
   background-color: white;
-  border: 5px;
-  border-radius: 20px;
+  border: 7px;
+  border-radius: 5px;
   margin-left: 10px;
   margin-right: 10px;
-  height: 18%;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
+  flex-direction: column;
 }
 .head {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  height: fit-content;
 }
 
 .name {
   padding-left: 10px;
   font-family: Arial, sans-serif;
-  justify-content: space-between;
-}
-
-.desc {
-  padding-left: 110%;
-  font-family: Arial, sans-serif;
-  color: rgb(178, 111, 186);
-  font-size: large;
 }
 .check {
-  display: flex;
   flex-direction: row;
   border: none;
   background-color: white;
@@ -34,4 +27,23 @@
 }
 .check:hover {
   color: green;
+}
+
+.desc {
+  font-family: Arial, sans-serif;
+  color: rgb(178, 111, 186);
+  font-size: large;
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  height: 100%;
+}
+.restore {
+  flex-direction: row;
+  border: none;
+  background-color: white;
+  padding-right: 10px;
+}
+.restore:hover {
+  color: red;
 }

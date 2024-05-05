@@ -16,6 +16,9 @@ export const AddButton: React.FC<Props> = ({ setTodo }) => {
     setTodo((todo) => [...todo, taskData]);
     setOpen(false);
   };
+  const handleClickAway = () => {
+    setOpen(false);
+  };
   return (
     <>
       <div>

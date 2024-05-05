@@ -9,6 +9,7 @@ export type TaskData = {
   id: string;
   name: string;
   description: string;
+  isDone: boolean;
 };
 
 function App() {

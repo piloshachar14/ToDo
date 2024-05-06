@@ -16,19 +16,14 @@ export const AddButton: React.FC<Props> = ({ setTodo }) => {
     setTodo((todo) => [...todo, taskData]);
     setOpen(false);
   };
-  const handleClickAway = () => {
-    setOpen(false);
-  };
+
   return (
     <>
-      <div>
-        <button onClick={() => handleClickOpen()} className={styles.btn}>
-          +
-        </button>
-      </div>
-      <div>
-        <AddTaskDialog open={open} setOpen={setOpen} onSubmit={handleSubmit} />
-      </div>
+      <button onClick={() => handleClickOpen()} className={styles.btn}>
+        +
+      </button>
+
+      <AddTaskDialog open={open} setOpen={setOpen} onSubmit={handleSubmit} />
     </>
   );
 };

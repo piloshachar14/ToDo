@@ -3,7 +3,6 @@ import { Category } from "./components/category/category";
 import styles from "./app.module.css";
 import { useState } from "react";
 import { Task } from "./components/task/task";
-import { CSSProperties } from "react";
 
 export type TaskData = {
   id: string;
@@ -15,13 +14,10 @@ export type TaskData = {
 function App() {
   const [todo, setTodo] = useState<TaskData[]>([]);
   const [donetasks, setDoneTasks] = useState<TaskData[]>([]);
-  const styletodo: CSSProperties = {
-    marginRight: "1rem",
-  };
 
   return (
     <div className={styles.container}>
-      <Category title="To-Do" style={styletodo}>
+      <Category title="To-Do">
         {todo.map((task) => (
           <Task
             key={task.id}

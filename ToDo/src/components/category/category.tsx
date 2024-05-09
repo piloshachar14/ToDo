@@ -9,7 +9,7 @@ export const Category: React.FC<Props> = ({ children, ...props }) => {
   return (
     <div className={styles.category} style={props.style}>
       <h1 className={styles.title}>{props.title}</h1>
-      {children}
+      <div className={styles.children}>{children}</div>
     </div>
   );
 };
